@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+      position: "sticky", top: 0, left: 0, right: 0, zIndex: 100,
       background: "rgba(10,10,10,0.95)",
       borderBottom: "1px solid rgba(255,255,255,0.08)",
       backdropFilter: "blur(12px)",

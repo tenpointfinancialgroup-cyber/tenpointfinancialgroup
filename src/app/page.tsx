@@ -2,20 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 const services = [
-  { title: "Retirement Planning", icon: "◈", desc: "Guaranteed income strategies designed to give you financial security and peace of mind throughout retirement." },
-  { title: "Estate Planning & Trusts", icon: "◈", desc: "Protect and transfer your wealth to the next generation with properly structured trusts and estate strategies." },
-  { title: "Life Insurance", icon: "◈", desc: "Term, whole, and indexed universal life policies tailored to protect your family's future." },
-  { title: "Long Term Care", icon: "◈", desc: "Preserve your assets and dignity with coverage that protects against the high cost of extended care." },
-  { title: "Medicare", icon: "◈", desc: "Navigate Medicare supplements, advantage plans, and Part D with expert, unbiased guidance." },
-  { title: "Health Insurance", icon: "◈", desc: "ACA marketplace plans, private health insurance, and group coverage solutions for individuals and businesses." },
-  { title: "Annuities", icon: "◈", desc: "Fixed indexed annuities that grow your savings tax-deferred while protecting principal from market loss." },
-  { title: "Debt Elimination", icon: "◈", desc: "Strategic roadmaps to eliminate debt faster and redirect cash flow toward building lasting wealth." },
+  { title: "Guaranteed Retirement Planning", icon: "◈", desc: "Retirement shouldn't be a gamble. We build income strategies around guaranteed vehicles — fixed indexed annuities and structured plans that ensure you never outlive your money." },
+  { title: "Estate Planning & Trusts", icon: "◈", desc: "A strong estate plan is the cornerstone of generational wealth. We help you establish the right trust structures and legal frameworks to ensure your assets pass seamlessly to those you love." },
+  { title: "Life Insurance", icon: "◈", desc: "From term coverage to indexed universal life, we design life insurance solutions that do more than protect — they build cash value, reduce taxes, and fund your legacy." },
+  { title: "Long Term Care", icon: "◈", desc: "One unexpected health event can unravel decades of savings. Our long-term care strategies protect your assets and preserve your independence when you need it most." },
+  { title: "Medicare Planning", icon: "◈", desc: "Medicare is complex and the wrong choices are costly. We simplify your options across supplements, advantage plans, and Part D so you get the coverage you need without overpaying." },
+  { title: "Health Insurance", icon: "◈", desc: "Whether you need an ACA marketplace plan, private coverage, or a group solution for your business, we find the right fit for your health needs and your budget." },
+  { title: "Annuities", icon: "◈", desc: "Fixed indexed annuities offer the rare combination of growth potential and principal protection. We match you with the right annuity to generate reliable income throughout retirement." },
+  { title: "Debt Elimination", icon: "◈", desc: "Debt is the enemy of wealth. We map out proven strategies to eliminate what you owe faster, freeing up cash flow you can redirect into building lasting financial security." },
 ];
 
 const pillars = [
-  { word: "Education", desc: "We empower you with knowledge so you make confident, informed decisions at every stage of life." },
-  { word: "Trust", desc: "We earn it through transparency, honesty, and always putting your family first." },
-  { word: "Guidance", desc: "We walk alongside you at every step, providing clear expert direction through every financial decision." },
+  { word: "Education", desc: "Financial confidence comes from understanding. We take the time to explain every option clearly so you can make informed decisions at every stage of life." },
+  { word: "Trust", desc: "We operate with complete transparency. No hidden agendas, no pressure — just honest guidance built on a foundation of integrity and accountability." },
+  { word: "Guidance", desc: "You don't have to navigate this alone. We walk alongside you through every financial decision, from your first plan to the legacy you leave behind." },
+  { word: "Legacy", desc: "Everything we do is designed with the future in mind — yours and your family's. We build strategies that create wealth meant to outlast generations." },
 ];
 
 export default function Home() {
@@ -114,7 +115,7 @@ export default function Home() {
             <Image src="/images/team.jpg" alt="Anthony Buck - Ten Point Financial Group" width={520} height={580} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent, rgba(0,0,0,0.8))", padding: "2rem 1.5rem 1.5rem" }}>
               <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.2rem" }}>Anthony Buck</p>
-              <p style={{ color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Financial Planner</p>
+              <p style={{ color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Owner</p>
             </div>
           </div>
           <div>
