@@ -52,3 +52,13 @@ h1, h2, h3, h4 {
 .divider-left {
   margin: 1rem 0;
 }
+
+.pillar-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.pillar-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}

@@ -31,15 +31,15 @@ export default function Home() {
         <Image src="/images/marble.png" alt="marble background" fill style={{ objectFit: "cover", objectPosition: "center" }} priority />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.65)" }} />
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "2rem", maxWidth: "800px" }}>
-          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={130} height={130} style={{ objectFit: "contain", marginBottom: "2rem", mixBlendMode: "screen" }} priority />
-          <p style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "1rem" }}>
+          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={180} height={180} style={{ objectFit: "contain", marginBottom: "2rem", mixBlendMode: "screen" }} priority />
+          <p style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.85rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "1rem" }}>
             Ten Point Financial Group
           </p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#ffffff", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", fontWeight: 600, marginBottom: "1.5rem", lineHeight: 1.2 }}>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#ffffff", fontSize: "clamp(2.8rem, 6vw, 4.8rem)", fontWeight: 600, marginBottom: "1.5rem", lineHeight: 1.2 }}>
             Building Legacies.<br />Protecting Families.
           </h1>
           <div style={{ width: "60px", height: "1px", background: "#c0c0c0", margin: "0 auto 1.5rem" }} />
-          <p style={{ color: "#c0c0c0", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2.5rem", fontFamily: "'Raleway', sans-serif", fontWeight: 300 }}>
+          <p style={{ color: "#c0c0c0", fontSize: "1.15rem", lineHeight: 1.9, marginBottom: "2.5rem", fontFamily: "'Raleway', sans-serif", fontWeight: 300 }}>
             We guide American families through the complexities of financial planning — from retirement and estate strategies to insurance and wealth protection.
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
@@ -62,12 +62,12 @@ export default function Home() {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p style={{ color: "#808080", fontSize: "0.7rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>What We Stand For</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>Our Foundation</h2>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>Our Foundation</h2>
             <div style={{ width: "50px", height: "1px", background: "#c0c0c0", margin: "1rem auto 0" }} />
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "2rem" }}>
             {pillars.map(p => (
-              <div key={p.word} style={{ textAlign: "center", padding: "2.5rem 1.5rem", border: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+              <div key={p.word} className="pillar-card" style={{ textAlign: "center", padding: "2.5rem 1.5rem", border: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.4rem", marginBottom: "1rem" }}>{p.word}</h3>
                 <div style={{ width: "30px", height: "1px", background: "#606060", margin: "0 auto 1rem" }} />
                 <p style={{ color: "#808080", fontSize: "0.85rem", lineHeight: 1.8 }}>{p.desc}</p>
@@ -83,7 +83,7 @@ export default function Home() {
         <div style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p style={{ color: "#808080", fontSize: "0.7rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>What We Offer</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>Our Services</h2>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>Our Services</h2>
             <div style={{ width: "50px", height: "1px", background: "#c0c0c0", margin: "1rem auto 0" }} />
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
@@ -112,7 +112,7 @@ export default function Home() {
       <section style={{ background: "#0d0d0d", padding: "6rem 2rem" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "center" }}>
           <div style={{ position: "relative" }}>
-            <Image src="/images/team.jpg" alt="Anthony Buck - Ten Point Financial Group" width={520} height={580} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} />
+            <Image src="/images/team.jpg" alt="Anthony Buck - Ten Point Financial Group" width={620} height={700} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent, rgba(0,0,0,0.8))", padding: "2rem 1.5rem 1.5rem" }}>
               <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.2rem" }}>Anthony Buck</p>
               <p style={{ color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Owner</p>
@@ -120,12 +120,12 @@ export default function Home() {
           </div>
           <div>
             <p style={{ color: "#808080", fontSize: "0.7rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Who We Are</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.4rem)", marginBottom: "1rem" }}>A Family Committed to Your Family</h2>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "1rem" }}>A Family Committed to Your Family</h2>
             <div style={{ width: "50px", height: "1px", background: "#c0c0c0", marginBottom: "1.5rem" }} />
-            <p style={{ color: "#808080", fontSize: "0.88rem", lineHeight: 1.9, marginBottom: "1.2rem" }}>
+            <p style={{ color: "#808080", fontSize: "1rem", lineHeight: 1.9, marginBottom: "1.2rem" }}>
               At Ten Point Financial Group, we believe financial planning is personal. We&apos;re not just advisors — we&apos;re a family that understands what it means to protect what matters most.
             </p>
-            <p style={{ color: "#808080", fontSize: "0.88rem", lineHeight: 1.9, marginBottom: "2rem" }}>
+            <p style={{ color: "#808080", fontSize: "1rem", lineHeight: 1.9, marginBottom: "2rem" }}>
               Our mission is to educate, empower, and guide families across the country toward financial security — from your first retirement conversation to the legacy you leave behind.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "2rem" }}>
@@ -149,8 +149,8 @@ export default function Home() {
         <Image src="/images/marble.png" alt="" fill style={{ objectFit: "cover", opacity: 0.2 }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.6)" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "650px", margin: "0 auto" }}>
-          <Image src="/images/logo.png" alt="" width={70} height={70} style={{ objectFit: "contain", marginBottom: "1.5rem", mixBlendMode: "screen" }} />
-          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", marginBottom: "1rem" }}>
+          <Image src="/images/logo.png" alt="" width={100} height={100} style={{ objectFit: "contain", marginBottom: "1.5rem", mixBlendMode: "screen" }} />
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 3.2rem)", marginBottom: "1rem" }}>
             Your Legacy Starts Today
           </h2>
           <div style={{ width: "50px", height: "1px", background: "#c0c0c0", margin: "0 auto 1.5rem" }} />

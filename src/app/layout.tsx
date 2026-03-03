@@ -13,18 +13,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased">
-        <div style={{
-          background: "#050505", borderBottom: "1px solid rgba(255,255,255,0.06)",
-          padding: "0.5rem 2rem", display: "flex", justifyContent: "flex-end",
-          alignItems: "center", gap: "2rem", flexWrap: "wrap",
-        }}>
-          <a href="tel:+15868991003" style={{ color: "#808080", textDecoration: "none", fontFamily: "'Raleway', sans-serif", fontSize: "0.72rem", letterSpacing: "0.08em" }}>
-            📞 +1 (586) 899-1003
-          </a>
-          <a href="mailto:tenpointfinancialgroup@gmail.com" style={{ color: "#808080", textDecoration: "none", fontFamily: "'Raleway', sans-serif", fontSize: "0.72rem", letterSpacing: "0.08em" }}>
-            ✉ tenpointfinancialgroup@gmail.com
-          </a>
-        </div>
         <Navbar />
         <main>{children}</main>
         <Footer />
