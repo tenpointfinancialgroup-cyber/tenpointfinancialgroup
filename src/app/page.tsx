@@ -13,10 +13,9 @@ const services = [
 ];
 
 const pillars = [
+  { word: "Education", desc: "We empower you with knowledge so you make confident, informed decisions at every stage of life." },
   { word: "Trust", desc: "We earn it through transparency, honesty, and always putting your family first." },
-  { word: "Unity", desc: "We believe financial wellness strengthens families and communities together." },
-  { word: "Legacy", desc: "Every strategy we build is designed to outlast you — for the generations that follow." },
-  { word: "Education", desc: "We empower you with knowledge so you make confident, informed decisions." },
+  { word: "Guidance", desc: "We walk alongside you at every step, providing clear expert direction through every financial decision." },
 ];
 
 export default function Home() {
@@ -31,7 +30,7 @@ export default function Home() {
         <Image src="/images/marble.png" alt="marble background" fill style={{ objectFit: "cover", objectPosition: "center" }} priority />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.65)" }} />
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "2rem", maxWidth: "800px" }}>
-          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={130} height={130} style={{ objectFit: "contain", marginBottom: "2rem" }} priority />
+          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={130} height={130} style={{ objectFit: "contain", marginBottom: "2rem", mixBlendMode: "screen" }} priority />
           <p style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "1rem" }}>
             Ten Point Financial Group
           </p>
@@ -149,7 +148,7 @@ export default function Home() {
         <Image src="/images/marble.png" alt="" fill style={{ objectFit: "cover", opacity: 0.2 }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.6)" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "650px", margin: "0 auto" }}>
-          <Image src="/images/logo.png" alt="" width={70} height={70} style={{ objectFit: "contain", marginBottom: "1.5rem", opacity: 0.85 }} />
+          <Image src="/images/logo.png" alt="" width={70} height={70} style={{ objectFit: "contain", marginBottom: "1.5rem", mixBlendMode: "screen" }} />
           <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", marginBottom: "1rem" }}>
             Your Legacy Starts Today
           </h2>

@@ -20,7 +20,7 @@ export default function Navbar() {
         height: "80px",
       }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
-          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={52} height={52} style={{ objectFit: "contain" }} />
+          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={52} height={52} style={{ objectFit: "contain", mixBlendMode: "screen" }} />
           <div>
             <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.05em", lineHeight: 1.2 }}>TEN POINT</div>
             <div style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase" }}>Financial Group</div>
