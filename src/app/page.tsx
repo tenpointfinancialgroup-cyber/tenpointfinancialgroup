@@ -31,7 +31,7 @@ export default function Home() {
         <Image src="/images/marble.png" alt="marble background" fill style={{ objectFit: "cover", objectPosition: "center" }} priority />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.65)" }} />
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "2rem", maxWidth: "800px" }}>
-          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={180} height={180} style={{ objectFit: "contain", marginBottom: "2rem", mixBlendMode: "screen" }} priority />
+          <Image src="/images/logo.png" alt="Ten Point Financial Group" width={180} height={180} style={{ objectFit: "contain", marginBottom: "2rem", mixBlendMode: "screen", filter: "contrast(1.3) brightness(1.1)" }} priority />
           <p style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.85rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "1rem" }}>
             Ten Point Financial Group
           </p>
@@ -149,7 +149,7 @@ export default function Home() {
         <Image src="/images/marble.png" alt="" fill style={{ objectFit: "cover", opacity: 0.2 }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.6)" }} />
         <div style={{ position: "relative", zIndex: 1, maxWidth: "650px", margin: "0 auto" }}>
-          <Image src="/images/logo.png" alt="" width={100} height={100} style={{ objectFit: "contain", marginBottom: "1.5rem", mixBlendMode: "screen" }} />
+          <Image src="/images/logo.png" alt="" width={100} height={100} style={{ objectFit: "contain", marginBottom: "1.5rem", mixBlendMode: "screen", filter: "contrast(1.3) brightness(1.1)" }} />
           <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 3.2rem)", marginBottom: "1rem" }}>
             Your Legacy Starts Today
           </h2>

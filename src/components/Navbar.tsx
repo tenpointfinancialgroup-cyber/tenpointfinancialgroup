@@ -26,7 +26,7 @@ export default function Navbar() {
             src="/images/logo.png"
             alt="Ten Point Financial Group"
             width={64} height={64}
-            style={{ objectFit: "contain", mixBlendMode: "screen" }}
+            style={{ objectFit: "contain", mixBlendMode: "screen", filter: "contrast(1.3) brightness(1.1)" }}
           />
           <div>
             <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.15rem", fontWeight: 600, letterSpacing: "0.06em", lineHeight: 1.2 }}>TEN POINT</div>

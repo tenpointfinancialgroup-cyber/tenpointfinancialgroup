@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1rem" }}>
-              <Image src="/images/logo.png" alt="Ten Point Financial Group" width={44} height={44} style={{ objectFit: "contain" }} />
+              <Image src="/images/logo.png" alt="Ten Point Financial Group" width={44} height={44} style={{ objectFit: "contain", mixBlendMode: "screen", filter: "contrast(1.3) brightness(1.1)" }} />
               <div>
                 <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "0.95rem", fontWeight: 600 }}>TEN POINT</div>
                 <div style={{ color: "#c0c0c0", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Financial Group</div>
