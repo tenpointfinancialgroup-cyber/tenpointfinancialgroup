@@ -5,7 +5,7 @@ import React, { useRef, useEffect, useState, createElement, useMemo, useCallback
 export const Component = () => {
     return (
         <div className='bg-black h-screen w-screen flex justify-center items-center'>
-            <VaporizeTextCycle
+            <VaporizeTextCycleCore
                 texts={["21st.dev", "Is", "Cool"]}
                 font={{ fontFamily: "Inter, sans-serif", fontSize: "70px", fontWeight: 600 }}
                 color="rgb(255,255, 255)"
