@@ -1,117 +1,157 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { GlowCard } from "@/components/ui/spotlight-card";
+import { EtherealBeams } from "@/components/ui/ethereal-beams";
+import { BookOpen, Users, Star, Shield } from "lucide-react";
+
+const S = {
+  white: "#ffffff",
+  silver: "#c0c0c0",
+  dim: "#888888",
+  mute: "#444444",
+  black: "#000000",
+  border: "rgba(255,255,255,0.07)",
+  borderM: "rgba(255,255,255,0.12)",
+};
 
 const values = [
-  { title: "Education First", desc: "We believe an informed client is a confident client. Every conversation starts with making sure you understand your options — no jargon, no pressure." },
-  { title: "Integrity Always", desc: "We are independent advisors. We are not beholden to any single carrier or product line. Our only obligation is to you and your best interest." },
-  { title: "Family-Centered", desc: "We treat every client like family. That means honest conversations, long-term relationships, and guidance that goes beyond a single transaction." },
-  { title: "Legacy-Driven", desc: "Everything we do is built around your future and the future of those you love. We think in generations, not quarters." },
+  { title: "Education First", icon: BookOpen, desc: "We believe an informed client is a confident client. Every conversation starts with making sure you understand your options — no jargon, no pressure." },
+  { title: "Integrity Always", icon: Shield, desc: "We are independent advisors. We are not beholden to any single carrier or product line. Our only obligation is to you and your best interest." },
+  { title: "Family-Centered", icon: Users, desc: "We treat every client like family. That means honest conversations, long-term relationships, and guidance that goes beyond a single transaction." },
+  { title: "Legacy-Driven", icon: Star, desc: "Everything we do is built around your future and the future of those you love. We think in generations, not quarters." },
 ];
 
-const licenses = [
-  "Life & Health Insurance (Licensed in all US states except NY & Puerto Rico)",
-  "Annuity Products & Fixed Indexed Annuities",
-  "Medicare Supplements, Advantage Plans & Part D",
-  "ACA Marketplace Health Insurance",
-  "Long Term Care Planning",
-  "Estate Planning Coordination",
-];
+const glowColors: Array<"purple" | "blue" | "green" | "orange"> = ["purple", "blue", "green", "orange"];
 
 export default function About() {
   return (
-    <>
-      {/* HERO */}
-      <section style={{ position: "relative", padding: "8rem 2rem 6rem", overflow: "hidden", textAlign: "center" }}>
-        <Image src="/images/marble.png" alt="" fill style={{ objectFit: "cover", opacity: 0.15 }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.7)" }} />
-        <div style={{ position: "relative", zIndex: 1, maxWidth: "750px", margin: "0 auto" }}>
-          <p style={{ color: "#808080", fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "1rem" }}>Who We Are</p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2.2rem, 5vw, 4rem)", fontWeight: 600, marginBottom: "1.5rem", lineHeight: 1.2 }}>
+    <div style={{ position: "relative", background: S.black }}>
+
+      {/* ── FIXED BACKGROUND — sits behind all sections ───────────────── */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <EtherealBeams beamWidth={2.5} beamHeight={18} beamNumber={15} lightColor="#ffffff" speed={2.5} noiseIntensity={2} scale={0.15} rotation={43} />
+      </div>
+      <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1, pointerEvents: "none" }} />
+      <div style={{ position: "fixed", inset: 0, zIndex: 2, pointerEvents: "none" }}>
+        <SparklesCore particleColor="#ffffff" background="transparent" minSize={0.4} maxSize={1.2} particleDensity={35} />
+      </div>
+
+      {/* ── WHAT WE STAND FOR ─────────────────────────────────────────── */}
+      <section style={{ position: "relative", zIndex: 3, padding: "8rem 2rem" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "5rem", maxWidth: "600px" }}>
+            <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>What We Stand For</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: S.white, fontSize: "clamp(2.25rem, 5.25vw, 4.125rem)", lineHeight: 1.1, marginBottom: "1.2rem" }}>
+              Four Pillars<br />One Mission
+            </h2>
+            <p style={{ color: S.dim, fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", lineHeight: 1.8, fontWeight: 300, maxWidth: "440px" }}>
+              Everything we do is grounded in these principles — built to serve your family, not just your finances.
+            </p>
+          </div>
+
+          <ul className="grid grid-cols-1 gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4">
+            {[
+              { word: "Education-Based", icon: BookOpen, desc: "We believe in empowering our clients by educating them on the strategies and tools available to them – at no cost and with no obligation." },
+              { word: "Holistic Approach", icon: Users, desc: "We strive to build long-lasting relationships with our clients as well as seek to understand their unique needs and goals before suggesting investment strategies." },
+              { word: "Professional & Accessible", icon: Star, desc: "You don't need $250,000 to work with us. In fact, most of our clients are beginner investors, looking for new tools to grow — and maintain — their wealth." },
+              { word: "Honest & Relatable", icon: Shield, desc: "When you work with our team, you're treated as family. You'll always receive honest feedback and quick communication." },
+            ].map((p, idx) => {
+              const Icon = p.icon;
+              const areas = ["md:[grid-area:1/1/2/7]", "md:[grid-area:1/7/2/13]", "md:[grid-area:2/1/3/7]", "md:[grid-area:2/7/3/13]"];
+              const gc: Array<"purple" | "blue" | "green" | "orange"> = ["purple", "blue", "green", "orange"];
+              return (
+                <li key={p.word} className={`min-h-[14rem] list-none ${areas[idx]}`}>
+                  <GlowCard glowColor={gc[idx]} customSize className="h-full">
+                    <div className="relative flex h-full flex-col items-center gap-6">
+                      <div className="flex flex-col items-center gap-4 w-full">
+                        <div className="w-fit rounded-lg border-[0.75px] border-white/10 bg-white/5 p-2">
+                          <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+                        </div>
+                        <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl font-semibold leading-snug tracking-tight md:text-3xl text-white text-center">
+                          {p.word}
+                        </h3>
+                        <p className="text-base leading-relaxed md:text-lg text-white/50 text-center">{p.desc}</p>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── HERO — Who We Are ─────────────────────────────────────────── */}
+      <section style={{ position: "relative", zIndex: 3, display: "flex", alignItems: "center", justifyContent: "center", padding: "4rem 2rem" }}>
+        <div style={{ textAlign: "center", maxWidth: "820px" }}>
+          <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>Who We Are</p>
+          <div style={{ width: "280px", height: "1px", background: S.mute, margin: "0 auto 1.8rem" }} />
+          <h1 className="glow-text" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 600, color: S.white, lineHeight: 1.1, marginBottom: "2rem", letterSpacing: "-0.01em" }}>
             A Family Built on Trust
           </h1>
-          <div style={{ width: "60px", height: "1px", background: "#c0c0c0", margin: "0 auto 1.5rem" }} />
-          <p style={{ color: "#c0c0c0", fontSize: "1.05rem", lineHeight: 1.9 }}>
+          <p style={{ fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", color: S.dim, lineHeight: 1.8, fontWeight: 300, maxWidth: "560px", margin: "0 auto 2rem" }}>
             Ten Point Financial Group was founded on a simple belief: every American family deserves access to clear, honest, and comprehensive financial guidance.
+          </p>
+          <p style={{ fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", color: S.silver, lineHeight: 1.8, fontWeight: 300, maxWidth: "680px", margin: "0 auto", fontStyle: "italic" }}>
+            At Ten Point Financial Group, our mission is to empower individuals, families, and businesses with clarity, confidence, and customized financial solutions. We begin by protecting what matters most — health and legacy — through expert guidance in financial services, ensuring our clients&apos; immediate needs are met with integrity and care.
           </p>
         </div>
       </section>
 
-      {/* STORY + PHOTO */}
-      <section style={{ background: "#0d0d0d", padding: "6rem 2rem" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "5rem", alignItems: "center" }}>
-          <div style={{ position: "relative" }}>
-            <Image src="/images/team.jpg" alt="Anthony Buck - Ten Point Financial Group" width={620} height={700} style={{ width: "100%", height: "auto", objectFit: "cover", display: "block" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent, rgba(0,0,0,0.85))", padding: "2rem 1.5rem 1.5rem" }}>
-              <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.2rem" }}>Anthony Buck</p>
-              <p style={{ color: "#c0c0c0", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Owner & Founder</p>
-            </div>
-          </div>
-          <div>
-            <p style={{ color: "#808080", fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Our Story</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.6rem)", marginBottom: "1rem" }}>
-              Built From Purpose, Not Profit
+      {/* ── STORY ─────────────────────────────────────────────────────── */}
+      <section id="story" style={{ position: "relative", zIndex: 3, padding: "4rem 2rem 8rem" }}>
+        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
+          <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>Our Story</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.25rem, 5.25vw, 4.125rem)", color: S.white, lineHeight: 1.1, marginBottom: "1.5rem" }}>
+            Built From Purpose,<br />Not Profit
+          </h2>
+          <div style={{ width: "40px", height: "1px", background: S.mute, marginBottom: "2rem" }} />
+          <p style={{ fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", color: S.dim, lineHeight: 1.8, fontWeight: 300, marginBottom: "1.4rem" }}>
+            Ten Point Financial Group was born from a desire to do things differently. Too many families are sold products they don&apos;t understand by advisors who prioritize commission over care. We set out to change that.
+          </p>
+          <p style={{ fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", color: S.dim, lineHeight: 1.8, fontWeight: 300, marginBottom: "1.4rem" }}>
+            As an independent agency, we work with dozens of top-rated carriers — meaning we can find the right fit for your situation, not push a one-size-fits-all solution.
+          </p>
+          <p style={{ fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", color: S.dim, lineHeight: 1.8, fontWeight: 300 }}>
+            Whether you&apos;re just starting to think about retirement, navigating Medicare for the first time, or building a legacy plan for your grandchildren — we are here for all of it.
+          </p>
+        </div>
+      </section>
+
+      {/* ── CORE VALUES ───────────────────────────────────────────────── */}
+      <section style={{ position: "relative", zIndex: 3, padding: "4rem 2rem 8rem" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "5rem" }}>
+            <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>What Drives Us</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.25rem, 5.25vw, 4.125rem)", color: S.white, lineHeight: 1.1 }}>
+              Our Core Values
             </h2>
-            <div style={{ width: "50px", height: "1px", background: "#c0c0c0", marginBottom: "1.5rem" }} />
-            <p style={{ color: "#808080", fontSize: "1rem", lineHeight: 1.9, marginBottom: "1.2rem" }}>
-              Ten Point Financial Group was born from a desire to do things differently. Too many families are sold products they don't understand by advisors who prioritize commission over care. We set out to change that.
-            </p>
-            <p style={{ color: "#808080", fontSize: "1rem", lineHeight: 1.9, marginBottom: "1.2rem" }}>
-              As an independent agency, we work with dozens of top-rated carriers — meaning we can find the right fit for your situation, not push a one-size-fits-all solution.
-            </p>
-            <p style={{ color: "#808080", fontSize: "1rem", lineHeight: 1.9, marginBottom: "2rem" }}>
-              Whether you&apos;re just starting to think about retirement, navigating Medicare for the first time, or building a legacy plan for your grandchildren — we are here for all of it.
-            </p>
-            <Link href="/contact" style={{
-              border: "1px solid rgba(255,255,255,0.3)", color: "#fff", padding: "0.85rem 2rem",
-              textDecoration: "none", fontFamily: "'Raleway', sans-serif",
-              fontSize: "0.78rem", letterSpacing: "0.15em", textTransform: "uppercase",
-            }}>Schedule a Consultation</Link>
           </div>
+          <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-4">
+            {values.map((v, idx) => {
+              const Icon = v.icon;
+              return (
+                <li key={v.title} className="min-h-[14rem] list-none">
+                  <GlowCard glowColor={glowColors[idx]} customSize className="h-full">
+                    <div className="relative flex h-full flex-col items-center gap-6">
+                      <div className="flex flex-col items-center gap-4 w-full">
+                        <div className="w-fit rounded-lg border-[0.75px] border-white/10 bg-white/5 p-2">
+                          <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+                        </div>
+                        <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl font-semibold leading-snug tracking-tight md:text-3xl text-white text-center">
+                          {v.title}
+                        </h3>
+                        <p className="text-base leading-relaxed md:text-lg text-white/50 text-center">{v.desc}</p>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
-      {/* VALUES */}
-      <section style={{ padding: "6rem 2rem", position: "relative", overflow: "hidden" }}>
-        <Image src="/images/marble.png" alt="" fill style={{ objectFit: "cover", opacity: 0.1 }} />
-        <div style={{ position: "relative", zIndex: 1, maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p style={{ color: "#808080", fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>What Drives Us</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>Our Core Values</h2>
-            <div style={{ width: "50px", height: "1px", background: "#c0c0c0", margin: "1rem auto 0" }} />
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem" }}>
-            {values.map(v => (
-              <div key={v.title} style={{ padding: "2.5rem 2rem", border: "1px solid rgba(255,255,255,0.07)", background: "rgba(10,10,10,0.85)" }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.2rem", marginBottom: "0.75rem" }}>{v.title}</h3>
-                <div style={{ width: "30px", height: "1px", background: "#606060", marginBottom: "1rem" }} />
-                <p style={{ color: "#808080", fontSize: "0.88rem", lineHeight: 1.8 }}>{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LICENSES */}
-      <section style={{ background: "#0d0d0d", padding: "6rem 2rem" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ color: "#808080", fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Credentials</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "1rem" }}>Licensed & Independent</h2>
-          <div style={{ width: "50px", height: "1px", background: "#c0c0c0", margin: "0 auto 2.5rem" }} />
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", textAlign: "left", maxWidth: "600px", margin: "0 auto 3rem" }}>
-            {licenses.map(l => (
-              <div key={l} style={{ display: "flex", gap: "1rem", alignItems: "flex-start", color: "#c0c0c0", fontSize: "0.9rem", lineHeight: 1.7 }}>
-                <span style={{ color: "#606060", marginTop: "0.1rem", flexShrink: 0 }}>—</span>
-                {l}
-              </div>
-            ))}
-          </div>
-          <Link href="/contact" style={{
-            background: "#fff", color: "#0a0a0a", padding: "1rem 3rem",
-            textDecoration: "none", fontFamily: "'Raleway', sans-serif",
-            fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 600,
-          }}>Work With Us</Link>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

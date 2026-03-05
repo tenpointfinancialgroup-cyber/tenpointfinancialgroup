@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { Phone, Mail } from "lucide-react";
+import { SpotlightButton } from "@/components/ui/spotlight-button";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,20 +18,14 @@ export default function Navbar() {
         maxWidth: "1280px", margin: "0 auto",
         padding: "0 2.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        height: "90px",
+        height: "120px",
       }}>
 
         {/* Logo + Brand */}
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "14px", textDecoration: "none", flexShrink: 0 }}>
-          <Image
-            src="/images/logo.png"
-            alt="Ten Point Financial Group"
-            width={64} height={64}
-            style={{ objectFit: "contain", mixBlendMode: "screen", filter: "contrast(1.3) brightness(1.1)" }}
-          />
-          <div>
-            <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.15rem", fontWeight: 600, letterSpacing: "0.06em", lineHeight: 1.2 }}>TEN POINT</div>
-            <div style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>Financial Group</div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.6rem", fontWeight: 700, letterSpacing: "0.06em", lineHeight: 1.2 }}>TEN POINT</div>
+            <div style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.85rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" }}>Financial Group</div>
           </div>
         </Link>
 
@@ -39,7 +34,7 @@ export default function Navbar() {
           {[["Services", "/services"], ["About", "/about"], ["Education", "/education"], ["Contact", "/contact"]].map(([label, href]) => (
             <Link key={label} href={href} style={{
               fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", textDecoration: "none",
-              fontSize: "0.82rem", letterSpacing: "0.12em", textTransform: "uppercase",
+              fontSize: "0.95rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
               transition: "color 0.2s", whiteSpace: "nowrap",
             }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
@@ -52,22 +47,32 @@ export default function Navbar() {
 
           {/* Contact Info */}
           <a href="tel:+15868991003" style={{
+            display: "flex", alignItems: "center", gap: "0.4rem",
             fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", textDecoration: "none",
-            fontSize: "0.78rem", letterSpacing: "0.06em", whiteSpace: "nowrap",
+            fontSize: "0.9rem", fontWeight: 700, letterSpacing: "0.06em", whiteSpace: "nowrap",
             transition: "color 0.2s",
           }}
             onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
             onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
-          >📞 (586) 899-1003</a>
+          >
+            <Phone size={13} strokeWidth={1.5} />
+            +1 (586) 899-1003
+          </a>
 
           <a href="mailto:tenpointfinancialgroup@gmail.com" style={{
+            display: "flex", alignItems: "center", gap: "0.4rem",
             fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", textDecoration: "none",
-            fontSize: "0.78rem", letterSpacing: "0.06em", whiteSpace: "nowrap",
+            fontSize: "0.9rem", fontWeight: 700, letterSpacing: "0.06em", whiteSpace: "nowrap",
             transition: "color 0.2s",
           }}
             onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
             onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
-          >✉ tenpointfinancialgroup@gmail.com</a>
+          >
+            <Mail size={13} strokeWidth={1.5} />
+            Email Us
+          </a>
+
+          <Link href="/contact"><SpotlightButton glowColor="green">Get Started</SpotlightButton></Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -87,8 +92,12 @@ export default function Navbar() {
             <Link key={label} href={href} onClick={() => setMenuOpen(false)} style={{ color: "#c0c0c0", textDecoration: "none", fontSize: "0.9rem", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label}</Link>
           ))}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            <a href="tel:+15868991003" style={{ color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>📞 (586) 899-1003</a>
-            <a href="mailto:tenpointfinancialgroup@gmail.com" style={{ color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>✉ tenpointfinancialgroup@gmail.com</a>
+            <a href="tel:+15868991003" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>
+              <Phone size={14} strokeWidth={1.5} /> (586) 899-1003
+            </a>
+            <a href="mailto:tenpointfinancialgroup@gmail.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>
+              <Mail size={14} strokeWidth={1.5} /> tenpointfinancialgroup@gmail.com
+            </a>
           </div>
         </div>
       )}

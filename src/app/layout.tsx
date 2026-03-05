@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
 export const metadata: Metadata = {
   title: "Ten Point Financial Group | Building Generational Wealth",
   description: "Expert guidance in retirement planning, estate planning, life insurance, Medicare, and wealth protection for American families.",
