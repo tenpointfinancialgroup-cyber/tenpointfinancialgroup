@@ -151,7 +151,7 @@ export default function Home() {
             }}
           >
             <VaporizeTextCycle
-              texts={["Debt Elimination", "Estate Planning", "Retirement Planning", "Long Term Care"]}
+              texts={["Debt Elimination", "Estate Planning", "Retirement Planning", "Long Term Care", "Health Insurance", "Life Insurance", "Medicare"]}
               vaporizeDuration={3}
               fadeInDuration={1.5}
               waitDuration={2}
