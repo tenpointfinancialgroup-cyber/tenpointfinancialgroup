@@ -40,12 +40,12 @@ export default function Education() {
       </div>
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "1200px", height: "180px", padding: "0 2rem" }}>
+      <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "1200px", padding: "0 2rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <VaporizeTextCycleDefault
           texts={["Coming Soon"]}
           font={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "120px",
+            fontSize: "clamp(2.5rem, 14vw, 120px)",
             fontWeight: 600,
           }}
           color="rgb(255, 255, 255)"
