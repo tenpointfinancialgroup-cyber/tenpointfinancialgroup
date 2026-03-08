@@ -222,15 +222,10 @@ export default function Home() {
       }}>
         {/* Gradient top line */}
         <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)", marginBottom: "3rem", marginTop: "-3rem" }} />
-        <div style={{
-          maxWidth: "1200px", margin: "0 auto",
-          display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-          alignItems: "center",
-        }}>
+        <div className="grid grid-cols-2 md:grid-cols-4" style={{ maxWidth: "1200px", margin: "0 auto", alignItems: "center" }}>
           {stats.map((s, i) => (
-            <div key={s.label} style={{
+            <div key={s.label} className={i % 2 === 0 ? "border-r border-white/20" : i < stats.length - 1 ? "md:border-r md:border-white/20" : ""} style={{
               textAlign: "center", padding: "0.5rem 1rem",
-              borderRight: i < stats.length - 1 ? "2px solid rgba(255,255,255,0.2)" : "none",
             }}>
               <p style={{
                 fontFamily: "'Playfair Display', serif",
@@ -281,13 +276,7 @@ export default function Home() {
             <div style={{ marginBottom: "3.5rem" }}>
               <Link href="/services" style={{ textDecoration: "none", display: "block" }}>
               <GlowingShadow>
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: "3fr 2fr",
-                  gap: "3rem",
-                  alignItems: "stretch",
-                  width: "100%",
-                }}>
+                <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-8 md:gap-12 w-full items-stretch">
                   <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                     <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>What We Offer</p>
                     <h2 style={{

@@ -27,13 +27,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "rgba(10,10,10,1)", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "3rem 2rem 1.5rem", position: "relative", zIndex: 10 }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1.4fr 2fr 1.2fr",
-          gap: "2rem",
-          marginBottom: "2rem",
-          alignItems: "start",
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ marginBottom: "2rem", alignItems: "start" }}>
 
           {/* Col 1 — Brand */}
           <div>
