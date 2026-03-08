@@ -37,14 +37,13 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(body),
     });
 
-    if (!ghlRes.ok) {
-      const data = await ghlRes.json();
-      console.error("GHL error:", ghlRes.status, JSON.stringify(data));
+    const ghlData = await ghlRes.json();
+
+    if (!ghlRes.ok && ghlRes.status !== 400) {
+      console.error("GHL error:", ghlRes.status, JSON.stringify(ghlData));
       return NextResponse.json({ error: "Submission failed." }, { status: 500 });
     }
-
-    const ghlData  = await ghlRes.json();
-    const contactId = ghlData?.contact?.id;
+    const contactId = ghlData?.contact?.id || ghlData?.meta?.contactId;
 
     if (contactId && message) {
       await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
