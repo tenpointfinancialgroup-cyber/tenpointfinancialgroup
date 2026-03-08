@@ -37,8 +37,6 @@ const labelStyle: React.CSSProperties = {
   fontWeight: 700,
 };
 
-const GHL_FORM_ID = "YSbC0cpJYL7no01HHMkS";
-
 const ContactForm = memo(function ContactForm() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", topic: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -55,34 +53,15 @@ const ContactForm = memo(function ContactForm() {
     setError("");
 
     try {
-      const parts = formData.name.trim().split(/\s+/);
-      const firstName = parts[0] || formData.name;
-      const lastName  = parts.slice(1).join(" ") || "";
-
-      // Submit directly to GHL's form endpoint — no API key needed
-      const payload = {
-        formId:    GHL_FORM_ID,
-        location_id: "",
-        first_name: firstName,
-        last_name:  lastName,
-        email:      formData.email,
-        phone:      formData.phone || "",
-        message:    `Topic: ${formData.topic || "General"}\n\n${formData.message || ""}`,
-      };
-
-      const res = await fetch(`https://api.leadconnectorhq.com/widget/form/submit`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
-        // Fallback: also post via our own API route
-        await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Submission failed");
       }
 
       setSubmitted(true);
