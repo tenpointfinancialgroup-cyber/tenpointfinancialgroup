@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const GHL_FORM_ID  = "YSbC0cpJYL7no01HHMkS";
-const GHL_LOCATION = "xqRUIfw0CZW1k6qVGmT0";
+const GHL_API_KEY     = process.env.GHL_API_KEY     || "";
+const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID || "";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,27 +15,47 @@ export async function POST(req: NextRequest) {
     const firstName = parts[0] || name;
     const lastName  = parts.slice(1).join(" ") || "";
 
-    const payload: Record<string, string> = {
-      formId:                  GHL_FORM_ID,
-      locationId:              GHL_LOCATION,
-      first_name:              firstName,
-      last_name:               lastName,
+    const body: Record<string, unknown> = {
+      firstName,
+      lastName,
       email,
-      phone:                   phone || "",
-      JanGdL7LRihnCwpkFlcM:  topic || "General Inquiry",
-      "3hkyE6OfgXwW2nGeBQdG": message || "",
+      locationId: GHL_LOCATION_ID,
+      source:     "Website Contact Form",
+      tags:       ["website-contact", (topic || "general").toLowerCase().replace(/\s+/g, "-")],
     };
 
-    const ghlRes = await fetch("https://backend.leadconnectorhq.com/forms/submit", {
+    if (phone)   body.phone = phone;
+    if (message) body.customField = { contact_topic: topic || "General", contact_message: message };
+
+    const ghlRes = await fetch("https://services.leadconnectorhq.com/contacts/", {
       method:  "POST",
-      headers: { "Content-Type": "application/json" },
-      body:    JSON.stringify(payload),
+      headers: {
+        "Authorization": `Bearer ${GHL_API_KEY}`,
+        "Version":       "2021-07-28",
+        "Content-Type":  "application/json",
+      },
+      body: JSON.stringify(body),
     });
 
     if (!ghlRes.ok) {
-      const text = await ghlRes.text();
-      console.error("GHL form error:", ghlRes.status, text);
+      const data = await ghlRes.json();
+      console.error("GHL error:", ghlRes.status, JSON.stringify(data));
       return NextResponse.json({ error: "Submission failed." }, { status: 500 });
+    }
+
+    const ghlData  = await ghlRes.json();
+    const contactId = ghlData?.contact?.id;
+
+    if (contactId && message) {
+      await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
+        method:  "POST",
+        headers: {
+          "Authorization": `Bearer ${GHL_API_KEY}`,
+          "Version":       "2021-07-28",
+          "Content-Type":  "application/json",
+        },
+        body: JSON.stringify({ body: `Topic: ${topic || "General"}\n\n${message}` }),
+      });
     }
 
     return NextResponse.json({ success: true });
