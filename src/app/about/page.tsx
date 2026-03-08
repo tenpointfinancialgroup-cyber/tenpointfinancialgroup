@@ -42,7 +42,7 @@ export default function About() {
           <div style={{ marginBottom: "5rem", maxWidth: "600px" }}>
             <p className="eyebrow" style={{ marginBottom: "1.2rem", fontSize: "1.65rem", letterSpacing: "0.25em" }}>What We Stand For</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", color: S.white, fontSize: "clamp(2.25rem, 5.25vw, 4.125rem)", lineHeight: 1.1, marginBottom: "1.2rem" }}>
-              Four Pillars<br />One Mission
+              Four Cornerstones<br />One Mission
             </h2>
             <p style={{ color: S.dim, fontSize: "clamp(1.4rem, 2.25vw, 1.65rem)", lineHeight: 1.8, fontWeight: 300, maxWidth: "440px" }}>
               Everything we do is grounded in these principles — built to serve your family, not just your finances.
