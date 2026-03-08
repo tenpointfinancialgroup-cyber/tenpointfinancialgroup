@@ -24,8 +24,7 @@ export async function POST(req: NextRequest) {
       tags:       ["website-contact", (topic || "general").toLowerCase().replace(/\s+/g, "-")],
     };
 
-    if (phone)   body.phone = phone;
-    if (message) body.customField = { contact_topic: topic || "General", contact_message: message };
+    if (phone) body.phone = phone;
 
     const ghlRes = await fetch("https://services.leadconnectorhq.com/contacts/", {
       method:  "POST",
@@ -39,9 +38,10 @@ export async function POST(req: NextRequest) {
 
     const ghlData = await ghlRes.json();
 
+    console.log("GHL status:", ghlRes.status, JSON.stringify(ghlData));
+
     if (!ghlRes.ok && ghlRes.status !== 400) {
-      console.error("GHL error:", ghlRes.status, JSON.stringify(ghlData));
-      return NextResponse.json({ error: "Submission failed." }, { status: 500 });
+      return NextResponse.json({ error: "Submission failed.", ghl_status: ghlRes.status, ghl_response: ghlData }, { status: 500 });
     }
     const contactId = ghlData?.contact?.id || ghlData?.meta?.contactId;
 
