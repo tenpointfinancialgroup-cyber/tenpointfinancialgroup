@@ -51,10 +51,10 @@ export default function About() {
 
           <ul className="grid grid-cols-1 gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4">
             {[
-              { word: "Education-Based", icon: BookOpen, desc: "We believe in empowering our clients by educating them on the strategies and tools available to them – at no cost and with no obligation." },
-              { word: "Holistic Approach", icon: Users, desc: "We strive to build long-lasting relationships with our clients as well as seek to understand their unique needs and goals before suggesting investment strategies." },
-              { word: "Professional & Accessible", icon: Star, desc: "You don't need $250,000 to work with us. In fact, most of our clients are beginner investors, looking for new tools to grow — and maintain — their wealth." },
-              { word: "Honest & Relatable", icon: Shield, desc: "When you work with our team, you're treated as family. You'll always receive honest feedback and quick communication." },
+              { word: "We Educate", icon: BookOpen, desc: "We teach you about available strategies and tools. No cost, no obligation." },
+              { word: "We Listen First", icon: Users, desc: "We get to know your needs and goals first, then recommend investment strategies that fit your situation." },
+              { word: "We Work With Everyone", icon: Star, desc: "We work with clients at any investment level. Most of our clients are beginners looking to build wealth." },
+              { word: "We're Straightforward", icon: Shield, desc: "You'll get honest feedback and quick responses. We communicate like we're working with people we care about." },
             ].map((p, idx) => {
               const Icon = p.icon;
               const areas = ["md:[grid-area:1/1/2/7]", "md:[grid-area:1/7/2/13]", "md:[grid-area:2/1/3/7]", "md:[grid-area:2/7/3/13]"];
