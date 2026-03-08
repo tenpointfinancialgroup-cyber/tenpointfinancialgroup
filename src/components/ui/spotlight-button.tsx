@@ -7,6 +7,7 @@ interface SpotlightButtonProps {
   className?: string;
   glowColor?: "blue" | "purple" | "green" | "red" | "orange";
   size?: "sm" | "lg";
+  disabled?: boolean;
 }
 
 const glowColorMap = {
@@ -58,6 +59,7 @@ export const SpotlightButton: React.FC<SpotlightButtonProps> = ({
   className = "",
   glowColor = "blue",
   size = "sm",
+  disabled = false,
 }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -123,8 +125,9 @@ export const SpotlightButton: React.FC<SpotlightButtonProps> = ({
       <button
         ref={btnRef}
         data-glow
+        disabled={disabled}
         className={`spotlight-btn ${className}`}
-        style={inlineStyles as React.CSSProperties}
+        style={{ ...inlineStyles as React.CSSProperties, opacity: disabled ? 0.5 : 1, cursor: disabled ? "not-allowed" : "pointer" }}
       >
         {children}
       </button>
