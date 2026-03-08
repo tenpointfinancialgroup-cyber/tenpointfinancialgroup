@@ -102,7 +102,7 @@ const ContactForm = memo(function ContactForm() {
         <input name="email" type="email" required value={formData.email} onChange={handleChange} placeholder="your@email.com" style={inputStyle} />
       </div>
       <div>
-        <label style={labelStyle}>Topic</label>
+        <label style={labelStyle}>Primary Goal</label>
         <select name="topic" value={formData.topic} onChange={handleChange} style={{ ...inputStyle, cursor: "pointer" }}>
           <option value="" style={{ background: "#0d0d0d" }}>Select a topic...</option>
           <option value="Debt Elimination" style={{ background: "#0d0d0d" }}>Debt Elimination</option>
@@ -116,7 +116,7 @@ const ContactForm = memo(function ContactForm() {
         </select>
       </div>
       <div>
-        <label style={labelStyle}>Message</label>
+        <label style={labelStyle}>Anything else you need help with?</label>
         <textarea name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell us a little about your situation..." style={{ ...inputStyle, resize: "vertical" }} />
       </div>
       {error && (
