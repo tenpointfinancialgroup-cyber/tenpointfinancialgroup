@@ -1,9 +1,22 @@
 "use client";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import VaporizeTextCycleDefault, { Tag } from "@/components/ui/vapour-text-effect";
 
 export default function Education() {
+  const [fontSize, setFontSize] = useState("80px");
+
+  useEffect(() => {
+    const calc = () => {
+      const size = Math.min(120, Math.max(36, window.innerWidth * 0.13));
+      setFontSize(`${Math.round(size)}px`);
+    };
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+
   return (
     <section
       style={{
@@ -45,7 +58,7 @@ export default function Education() {
           texts={["Coming Soon"]}
           font={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(2.5rem, 14vw, 120px)",
+            fontSize: fontSize,
             fontWeight: 600,
           }}
           color="rgb(255, 255, 255)"
