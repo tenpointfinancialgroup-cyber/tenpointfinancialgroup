@@ -1,7 +1,5 @@
 "use client";
-import Link from "next/link";
-import { useState, memo } from "react";
-import { SpotlightButton } from "@/components/ui/spotlight-button";
+import Script from "next/script";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -11,119 +9,6 @@ const S = {
   mute: "#444444", black: "#000000",
   border: "rgba(255,255,255,0.07)", borderM: "rgba(255,255,255,0.12)",
 };
-
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  background: "#0d0d0d",
-  border: "1px solid rgba(255,255,255,0.1)",
-  color: S.white,
-  padding: "1.1rem 1.4rem",
-  fontFamily: "'Raleway', sans-serif",
-  fontSize: "1.2rem",
-  fontWeight: 500,
-  outline: "none",
-  borderRadius: "4px",
-  transition: "border-color 0.2s",
-  colorScheme: "dark" as any,
-};
-
-const labelStyle: React.CSSProperties = {
-  fontFamily: "'Raleway', sans-serif",
-  color: S.dim,
-  fontSize: "0.9rem",
-  letterSpacing: "0.2em",
-  textTransform: "uppercase",
-  display: "block",
-  marginBottom: "0.5rem",
-  fontWeight: 700,
-};
-
-const ContactForm = memo(function ContactForm() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", topic: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Submission failed.");
-      setSubmitted(true);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  if (submitted) {
-    return (
-      <div style={{ textAlign: "center", padding: "5rem 2rem", border: `1px solid ${S.border}`, background: "rgba(255,255,255,0.02)", borderRadius: "12px" }}>
-        <div style={{ width: "4px", height: "4px", background: "rgba(255,255,255,0.3)", borderRadius: "50%", margin: "0 auto 2rem" }} />
-        <h3 style={{ fontFamily: "'Playfair Display', serif", color: S.white, fontSize: "2rem", marginBottom: "1rem" }}>Message Received</h3>
-        <div style={{ width: "40px", height: "1px", background: S.mute, margin: "0 auto 1.5rem" }} />
-        <p style={{ color: S.dim, fontSize: "1.1rem", lineHeight: 1.8, fontWeight: 300 }}>
-          Thank you for reaching out. We&apos;ll be in touch with you soon!
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
-        <div>
-          <label style={labelStyle}>Full Name *</label>
-          <input name="name" required value={formData.name} onChange={handleChange} placeholder="Your name" style={inputStyle} />
-        </div>
-        <div>
-          <label style={labelStyle}>Phone</label>
-          <input name="phone" value={formData.phone} onChange={handleChange} placeholder="(000) 000-0000" style={inputStyle} />
-        </div>
-      </div>
-      <div>
-        <label style={labelStyle}>Email *</label>
-        <input name="email" type="email" required value={formData.email} onChange={handleChange} placeholder="your@email.com" style={inputStyle} />
-      </div>
-      <div>
-        <label style={labelStyle}>Topic</label>
-        <select name="topic" value={formData.topic} onChange={handleChange} style={{ ...inputStyle, cursor: "pointer" }}>
-          <option value="" style={{ background: "#0d0d0d" }}>Select a topic...</option>
-          <option value="debt" style={{ background: "#0d0d0d" }}>Debt Elimination</option>
-          <option value="estate" style={{ background: "#0d0d0d" }}>Estate Planning &amp; Trusts</option>
-          <option value="retirement" style={{ background: "#0d0d0d" }}>Retirement Planning</option>
-          <option value="ltc" style={{ background: "#0d0d0d" }}>Long Term Care</option>
-          <option value="life" style={{ background: "#0d0d0d" }}>Life Insurance</option>
-          <option value="health" style={{ background: "#0d0d0d" }}>Health Insurance</option>
-          <option value="medicare" style={{ background: "#0d0d0d" }}>Medicare</option>
-          <option value="other" style={{ background: "#0d0d0d" }}>General Inquiry</option>
-        </select>
-      </div>
-      <div>
-        <label style={labelStyle}>Message</label>
-        <textarea name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell us a little about your situation..." style={{ ...inputStyle, resize: "vertical" }} />
-      </div>
-      {error && (
-        <p style={{ color: "#f87171", fontSize: "1rem", fontFamily: "'Raleway', sans-serif" }}>{error}</p>
-      )}
-      <SpotlightButton glowColor="purple" size="lg" disabled={loading}>
-        {loading ? "Sending..." : "Send Message"}
-      </SpotlightButton>
-    </form>
-  );
-});
 
 export default function Contact() {
   return (
@@ -214,10 +99,25 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* GHL Form Embed */}
           <div>
-            <ContactForm />
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/YSbC0cpJYL7no01HHMkS"
+              style={{ width: "100%", height: "984px", border: "none", borderRadius: "3px" }}
+              id="inline-YSbC0cpJYL7no01HHMkS"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-activation-type="alwaysActivated"
+              data-deactivation-type="neverDeactivate"
+              data-form-name="Tenpointfinancialgroup.com Form"
+              data-height="984"
+              data-layout-iframe-id="inline-YSbC0cpJYL7no01HHMkS"
+              data-form-id="YSbC0cpJYL7no01HHMkS"
+              title="Tenpointfinancialgroup.com Form"
+            />
+            <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
           </div>
+
         </div>
       </section>
 
