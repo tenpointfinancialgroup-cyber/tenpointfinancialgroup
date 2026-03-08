@@ -4,7 +4,6 @@ const GHL_FORM_ID = "YSbC0cpJYL7no01HHMkS";
 
 export async function GET() {
   const payload = {
-    formId:      GHL_FORM_ID,
     location_id: "",
     first_name:  "Test",
     last_name:   "User",
@@ -13,7 +12,7 @@ export async function GET() {
     message:     "Topic: General\n\nThis is a test submission.",
   };
 
-  const ghlRes = await fetch("https://api.leadconnectorhq.com/widget/form/submit", {
+  const ghlRes = await fetch(`https://api.leadconnectorhq.com/widget/form/${GHL_FORM_ID}`, {
     method:  "POST",
     headers: { "Content-Type": "application/json" },
     body:    JSON.stringify(payload),

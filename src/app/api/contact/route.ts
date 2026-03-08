@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
     const lastName  = parts.slice(1).join(" ") || "";
 
     const payload = {
-      formId:      GHL_FORM_ID,
       location_id: "",
       first_name:  firstName,
       last_name:   lastName,
@@ -24,7 +23,7 @@ export async function POST(req: NextRequest) {
       message:     `Topic: ${topic || "General"}\n\n${message || ""}`,
     };
 
-    const ghlRes = await fetch("https://api.leadconnectorhq.com/widget/form/submit", {
+    const ghlRes = await fetch(`https://api.leadconnectorhq.com/widget/form/${GHL_FORM_ID}`, {
       method:  "POST",
       headers: { "Content-Type": "application/json" },
       body:    JSON.stringify(payload),
