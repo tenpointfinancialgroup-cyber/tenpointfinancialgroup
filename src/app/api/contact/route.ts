@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const GHL_FORM_ID = "YSbC0cpJYL7no01HHMkS";
+const GHL_FORM_ID  = "YSbC0cpJYL7no01HHMkS";
+const GHL_LOCATION = "xqRUIfw0CZW1k6qVGmT0";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,20 +11,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
     }
 
-    const parts = name.trim().split(/\s+/);
+    const parts     = name.trim().split(/\s+/);
     const firstName = parts[0] || name;
     const lastName  = parts.slice(1).join(" ") || "";
 
-    const payload = {
-      location_id: "",
-      first_name:  firstName,
-      last_name:   lastName,
+    const payload: Record<string, string> = {
+      formId:                  GHL_FORM_ID,
+      locationId:              GHL_LOCATION,
+      first_name:              firstName,
+      last_name:               lastName,
       email,
-      phone:       phone || "",
-      message:     `Topic: ${topic || "General"}\n\n${message || ""}`,
+      phone:                   phone || "",
+      JanGdL7LRihnCwpkFlcM:  topic || "General Inquiry",
+      "3hkyE6OfgXwW2nGeBQdG": message || "",
     };
 
-    const ghlRes = await fetch(`https://api.leadconnectorhq.com/widget/form/${GHL_FORM_ID}`, {
+    const ghlRes = await fetch("https://backend.leadconnectorhq.com/forms/submit", {
       method:  "POST",
       headers: { "Content-Type": "application/json" },
       body:    JSON.stringify(payload),
