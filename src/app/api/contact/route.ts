@@ -35,56 +35,44 @@ export async function POST(req: NextRequest) {
     const topicLabel = TOPIC_LABELS[topic] || topic || "General Inquiry";
 
     const body: Record<string, unknown> = {
-      locationId: GHL_LOCATION_ID,
       firstName,
       lastName,
       email,
+      source: "Website Contact Form",
       tags: ["website-contact", topicLabel.toLowerCase().replace(/\s+/g, "-")],
     };
 
     if (phone) body.phone = phone;
+    if (message) body.customField = { contact_topic: topicLabel, contact_message: message };
 
-    // Append topic + message as a note via the source field
-    if (message || topic) {
-      body.source = "Website Contact Form";
-      body.customFields = [
-        { key: "contact_topic",   field_value: topicLabel },
-        { key: "contact_message", field_value: message || "" },
-      ];
-    }
-
-    const ghlRes = await fetch("https://services.leadconnectorhq.com/contacts/", {
+    // GHL v1 API — works with standard API keys from Settings → API Keys
+    const ghlRes = await fetch("https://rest.gohighlevel.com/v1/contacts/", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${GHL_API_KEY}`,
-        "Version":        "2021-07-28",
-        "Content-Type":   "application/json",
+        "Content-Type":  "application/json",
       },
       body: JSON.stringify(body),
     });
 
+    const ghlData = await ghlRes.json();
+    console.log("GHL response:", ghlRes.status, JSON.stringify(ghlData));
+
     if (!ghlRes.ok) {
-      const err = await ghlRes.text();
-      console.error("GHL error:", ghlRes.status, err);
+      console.error("GHL error:", ghlRes.status, JSON.stringify(ghlData));
       return NextResponse.json({ error: "Failed to submit. Please call us directly." }, { status: 500 });
     }
 
-    // If message exists, add it as a note on the contact
-    const ghlData = await ghlRes.json();
+    // Add message as a note on the contact
     const contactId = ghlData?.contact?.id;
-
     if (contactId && message) {
-      await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
+      await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/notes/`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${GHL_API_KEY}`,
-          "Version":        "2021-07-28",
-          "Content-Type":   "application/json",
+          "Content-Type":  "application/json",
         },
-        body: JSON.stringify({
-          userId: contactId,
-          body:   `Topic: ${topicLabel}\n\n${message}`,
-        }),
+        body: JSON.stringify({ body: `Topic: ${topicLabel}\n\n${message}` }),
       });
     }
 
