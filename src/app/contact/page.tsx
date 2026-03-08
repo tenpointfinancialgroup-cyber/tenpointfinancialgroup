@@ -41,14 +41,31 @@ const labelStyle: React.CSSProperties = {
 const ContactForm = memo(function ContactForm() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", topic: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Submission failed.");
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -98,8 +115,11 @@ const ContactForm = memo(function ContactForm() {
         <label style={labelStyle}>Message</label>
         <textarea name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Tell us a little about your situation..." style={{ ...inputStyle, resize: "vertical" }} />
       </div>
-      <SpotlightButton glowColor="purple" size="lg">
-        Send Message
+      {error && (
+        <p style={{ color: "#f87171", fontSize: "1rem", fontFamily: "'Raleway', sans-serif" }}>{error}</p>
+      )}
+      <SpotlightButton glowColor="purple" size="lg" disabled={loading}>
+        {loading ? "Sending..." : "Send Message"}
       </SpotlightButton>
     </form>
   );
