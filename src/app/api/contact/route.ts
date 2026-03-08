@@ -45,14 +45,15 @@ export async function POST(req: NextRequest) {
     if (phone) body.phone = phone;
     if (message) body.customField = { contact_topic: topicLabel, contact_message: message };
 
-    // GHL v1 API — works with standard API keys from Settings → API Keys
-    const ghlRes = await fetch("https://rest.gohighlevel.com/v1/contacts/", {
+    // GHL v2 API — required for Pit- Private Integration Tokens
+    const ghlRes = await fetch("https://services.leadconnectorhq.com/contacts/", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${GHL_API_KEY}`,
+        "Version":       "2021-07-28",
         "Content-Type":  "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ ...body, locationId: GHL_LOCATION_ID }),
     });
 
     const ghlData = await ghlRes.json();
@@ -66,10 +67,11 @@ export async function POST(req: NextRequest) {
     // Add message as a note on the contact
     const contactId = ghlData?.contact?.id;
     if (contactId && message) {
-      await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/notes/`, {
+      await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${GHL_API_KEY}`,
+          "Version":       "2021-07-28",
           "Content-Type":  "application/json",
         },
         body: JSON.stringify({ body: `Topic: ${topicLabel}\n\n${message}` }),

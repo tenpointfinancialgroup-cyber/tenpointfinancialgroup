@@ -12,13 +12,14 @@ export async function GET() {
     tags: ["website-contact"],
   };
 
-  const res = await fetch("https://rest.gohighlevel.com/v1/contacts/", {
+  const res = await fetch("https://services.leadconnectorhq.com/contacts/", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${key}`,
-      "Content-Type": "application/json",
+      "Version":       "2021-07-28",
+      "Content-Type":  "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify({ ...body, locationId: loc }),
   });
 
   const data = await res.json();
