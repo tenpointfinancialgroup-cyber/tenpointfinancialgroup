@@ -63,7 +63,7 @@ export default function Services() {
           <p style={{ color: S.dim, fontSize: "clamp(1.1rem, 2vw, 1.35rem)", lineHeight: 1.8, fontWeight: 300, maxWidth: "520px", margin: "0 auto 2.5rem" }}>
             A full suite of services designed to protect your family, grow your wealth, and build a legacy that lasts.
           </p>
-          <Link href="/contact">
+          <Link href="/contact?from=services">
             <SpotlightButton glowColor="blue" size="lg">Schedule Consultation</SpotlightButton>
           </Link>
         </div>
@@ -72,28 +72,32 @@ export default function Services() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
           {services.slice(0, 4).map((svc) => {
             const Icon = svc.icon;
+            const topicParam = encodeURIComponent(svc.title);
             return (
-              <CardCanvas key={svc.title} className="min-h-[14rem]">
-                <Card hue={svc.hue} duration={svc.duration} className="p-8 md:p-12 h-full">
-                  <div className="flex flex-col gap-6 h-full" style={{ margin: "1.25rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                      <h3 style={{
-                        fontFamily: "'Playfair Display', serif",
-                        color: S.white,
-                        fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
-                        lineHeight: 1.2,
-                        fontWeight: 600,
-                        maxWidth: "80%",
-                      }}>{svc.title}</h3>
-                      <div className="w-fit rounded-lg border border-white/10 bg-white/5 p-2 shrink-0">
-                        <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+              <Link key={svc.title} href={`/contact?topic=${topicParam}&from=services`} style={{ textDecoration: "none" }}>
+                <CardCanvas className="min-h-[14rem]">
+                  <Card hue={svc.hue} duration={svc.duration} className="p-8 md:p-12 h-full">
+                    <div className="flex flex-col gap-6 h-full" style={{ margin: "1.25rem" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                        <h3 style={{
+                          fontFamily: "'Playfair Display', serif",
+                          color: S.white,
+                          fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
+                          lineHeight: 1.2,
+                          fontWeight: 600,
+                          maxWidth: "80%",
+                        }}>{svc.title}</h3>
+                        <div className="w-fit rounded-lg border border-white/10 bg-white/5 p-2 shrink-0">
+                          <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+                        </div>
                       </div>
+                      <div style={{ width: "32px", height: "1px", background: S.mute }} />
+                      <p style={{ color: S.dim, fontSize: "clamp(1rem, 1.5vw, 1.125rem)", lineHeight: 1.8, fontWeight: 300 }}>{svc.desc}</p>
+                      <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "auto" }}>Get Started →</p>
                     </div>
-                    <div style={{ width: "32px", height: "1px", background: S.mute }} />
-                    <p style={{ color: S.dim, fontSize: "clamp(1rem, 1.5vw, 1.125rem)", lineHeight: 1.8, fontWeight: 300 }}>{svc.desc}</p>
-                  </div>
-                </Card>
-              </CardCanvas>
+                  </Card>
+                </CardCanvas>
+              </Link>
             );
           })}
         </div>
@@ -102,28 +106,32 @@ export default function Services() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {services.slice(4).map((svc) => {
             const Icon = svc.icon;
+            const topicParam = encodeURIComponent(svc.title);
             return (
-              <CardCanvas key={svc.title} className="min-h-[14rem]">
-                <Card hue={svc.hue} duration={svc.duration} className="p-8 md:p-12 h-full">
-                  <div className="flex flex-col gap-6 h-full" style={{ margin: "1.25rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                      <h3 style={{
-                        fontFamily: "'Playfair Display', serif",
-                        color: S.white,
-                        fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
-                        lineHeight: 1.2,
-                        fontWeight: 600,
-                        maxWidth: "80%",
-                      }}>{svc.title}</h3>
-                      <div className="w-fit rounded-lg border border-white/10 bg-white/5 p-2 shrink-0">
-                        <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+              <Link key={svc.title} href={`/contact?topic=${topicParam}&from=services`} style={{ textDecoration: "none" }}>
+                <CardCanvas className="min-h-[14rem]">
+                  <Card hue={svc.hue} duration={svc.duration} className="p-8 md:p-12 h-full">
+                    <div className="flex flex-col gap-6 h-full" style={{ margin: "1.25rem" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                        <h3 style={{
+                          fontFamily: "'Playfair Display', serif",
+                          color: S.white,
+                          fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
+                          lineHeight: 1.2,
+                          fontWeight: 600,
+                          maxWidth: "80%",
+                        }}>{svc.title}</h3>
+                        <div className="w-fit rounded-lg border border-white/10 bg-white/5 p-2 shrink-0">
+                          <Icon className="h-4 w-4 text-white/50" strokeWidth={1.4} />
+                        </div>
                       </div>
+                      <div style={{ width: "32px", height: "1px", background: S.mute }} />
+                      <p style={{ color: S.dim, fontSize: "clamp(1rem, 1.5vw, 1.125rem)", lineHeight: 1.8, fontWeight: 300 }}>{svc.desc}</p>
+                      <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "auto" }}>Get Started →</p>
                     </div>
-                    <div style={{ width: "32px", height: "1px", background: S.mute }} />
-                    <p style={{ color: S.dim, fontSize: "clamp(1rem, 1.5vw, 1.125rem)", lineHeight: 1.8, fontWeight: 300 }}>{svc.desc}</p>
-                  </div>
-                </Card>
-              </CardCanvas>
+                  </Card>
+                </CardCanvas>
+              </Link>
             );
           })}
         </div>{/* end bottom 4 */}

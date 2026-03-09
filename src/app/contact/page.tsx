@@ -1,5 +1,5 @@
 "use client";
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import { SpotlightButton } from "@/components/ui/spotlight-button";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { SparklesCore } from "@/components/ui/sparkles";
@@ -43,6 +43,13 @@ const ContactForm = memo(function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Pre-fill topic from URL param e.g. /contact?topic=Medicare
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get("topic");
+    if (t) setFormData(prev => ({ ...prev, topic: t }));
+  }, []);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -53,10 +60,11 @@ const ContactForm = memo(function ContactForm() {
     setError("");
 
     try {
+      const params = new URLSearchParams(window.location.search);
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source_page: params.get("from") || "contact" }),
       });
 
       if (!res.ok) {

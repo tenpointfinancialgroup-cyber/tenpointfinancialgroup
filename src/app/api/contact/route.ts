@@ -5,7 +5,7 @@ const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID || "";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, topic, message } = await req.json();
+    const { name, email, phone, topic, message, source_page } = await req.json();
 
     if (!name || !email) {
       return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
@@ -15,13 +15,16 @@ export async function POST(req: NextRequest) {
     const firstName = parts[0] || name;
     const lastName  = parts.slice(1).join(" ") || "";
 
+    const topicTag  = (topic || "general").toLowerCase().replace(/[\s&]+/g, "-").replace(/[^a-z0-9-]/g, "");
+    const sourceTag = source_page ? `from-${source_page}` : "from-contact-page";
+
     const body: Record<string, unknown> = {
       firstName,
       lastName,
       email,
       locationId: GHL_LOCATION_ID,
-      source:     "Website Contact Form",
-      tags:       ["website-contact", (topic || "general").toLowerCase().replace(/\s+/g, "-")],
+      source:     "Website",
+      tags:       ["website-contact", topicTag, sourceTag],
     };
 
     if (phone) body.phone = phone;
