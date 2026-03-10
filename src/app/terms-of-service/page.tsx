@@ -63,7 +63,7 @@ const sections = [
   },
   {
     title: "13. Contact Us",
-    content: `If you have questions about these Terms of Service, please contact us:\n\n**Ten Point Financial Group**\nPhone: (586) 899-1003\nEmail: tenpointfinancialgroup@gmail.com\nWebsite: tenpointfinancialgroup.com`,
+    content: `If you have questions about these Terms of Service, please contact us:\n\n**Ten Point Financial Group**\nPhone: +1 (586) 899-1003\nEmail: tenpointfinancialgroup@gmail.com\nWebsite: tenpointfinancialgroup.com`,
   },
 ];
 
@@ -140,7 +140,7 @@ export default function TermsOfService() {
             <strong style={{ color: "#ffffff" }}>Questions about these Terms?</strong>{" "}
             Contact us at{" "}
             <a href="mailto:tenpointfinancialgroup@gmail.com" style={{ color: "#9333ea" }}>tenpointfinancialgroup@gmail.com</a>{" "}
-            or call <a href="tel:+15868991003" style={{ color: "#9333ea" }}>(586) 899-1003</a>.
+            or call <a href="tel:+15868991003" style={{ color: "#9333ea" }}>+1 (586) 899-1003</a>.
             Also see our <a href="/privacy-policy" style={{ color: "#9333ea" }}>Privacy Policy</a> and{" "}
             <a href="/data-deletion" style={{ color: "#9333ea" }}>Data Deletion Instructions</a>.
           </p>

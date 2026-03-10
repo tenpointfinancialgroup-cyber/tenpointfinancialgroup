@@ -80,7 +80,7 @@ Consultation records and financial guidance notes may be retained for up to 7 ye
 • **Opt out** — unsubscribe from marketing emails at any time using the unsubscribe link in any email, or by contacting us directly.
 • **Data portability** — request your data in a structured, machine-readable format.
 
-To exercise any of these rights, contact us at tenpointfinancialgroup@gmail.com or call (586) 899-1003.`,
+To exercise any of these rights, contact us at tenpointfinancialgroup@gmail.com or call +1 (586) 899-1003.`,
   },
   {
     title: "8. Security",
@@ -109,7 +109,7 @@ No method of transmission over the internet is 100% secure. While we strive to p
     content: `If you have questions, concerns, or requests regarding this Privacy Policy, please contact us:
 
 **Ten Point Financial Group**
-Phone: (586) 899-1003
+Phone: +1 (586) 899-1003
 Email: tenpointfinancialgroup@gmail.com
 Website: tenpointfinancialgroup.com`,
   },
@@ -229,7 +229,7 @@ export default function PrivacyPolicy() {
             </a>{" "}
             or call{" "}
             <a href="tel:+15868991003" style={{ color: S.purple }}>
-              (586) 899-1003
+              +1 (586) 899-1003
             </a>
             . You can also{" "}
             <a href="https://calendly.com/tenpointfinancialgroup/anthonybuck" target="_blank" rel="noopener noreferrer" style={{ color: S.purple }}>

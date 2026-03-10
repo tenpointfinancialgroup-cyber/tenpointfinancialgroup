@@ -55,7 +55,7 @@ export function VercelV0Chat() {
         {
           role: "assistant",
           content:
-            "I apologize, I'm having trouble connecting right now. Please call us at (586) 899-1003 or use our contact form.",
+            "I apologize, I'm having trouble connecting right now. Please call us at +1 (586) 899-1003 or use our contact form.",
         },
       ]);
     } finally {

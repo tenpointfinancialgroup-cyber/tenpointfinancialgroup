@@ -74,7 +74,7 @@ const ContactForm = memo(function ContactForm() {
 
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please call us directly at (586) 899-1003.");
+      setError("Something went wrong. Please call us directly at +1 (586) 899-1003.");
     } finally {
       setLoading(false);
     }

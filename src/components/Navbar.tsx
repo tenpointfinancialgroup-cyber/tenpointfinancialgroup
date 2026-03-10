@@ -93,7 +93,7 @@ export default function Navbar() {
           ))}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <a href="tel:+15868991003" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>
-              <Phone size={14} strokeWidth={1.5} /> (586) 899-1003
+              <Phone size={14} strokeWidth={1.5} /> +1 (586) 899-1003
             </a>
             <a href="mailto:tenpointfinancialgroup@gmail.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#808080", textDecoration: "none", fontSize: "0.85rem" }}>
               <Mail size={14} strokeWidth={1.5} /> tenpointfinancialgroup@gmail.com

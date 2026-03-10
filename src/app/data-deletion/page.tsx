@@ -242,7 +242,7 @@ export default function DataDeletion() {
             </a>{" "}
             or call{" "}
             <a href="tel:+15868991003" style={{ color: S.purple }}>
-              (586) 899-1003
+              +1 (586) 899-1003
             </a>
             . For more information on how we handle your data, see our{" "}
             <a href="/privacy-policy" style={{ color: S.purple }}>
