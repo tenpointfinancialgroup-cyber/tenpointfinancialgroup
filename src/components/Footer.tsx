@@ -32,10 +32,10 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             <div style={{ marginBottom: "1rem" }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "1.8rem", fontWeight: 700, letterSpacing: "0.06em", lineHeight: 1.2 }}>TEN POINT</div>
-              <div style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "0.9rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" }}>Financial Group</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(1.2rem, 3vw, 1.8rem)", fontWeight: 700, letterSpacing: "0.06em", lineHeight: 1.2 }}>TEN POINT</div>
+              <div style={{ fontFamily: "'Raleway', sans-serif", color: "#c0c0c0", fontSize: "clamp(0.65rem, 1.5vw, 0.9rem)", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" }}>Financial Group</div>
             </div>
-            <p style={{ fontFamily: "'Raleway', sans-serif", color: "#808080", fontSize: "0.95rem", fontWeight: 400, lineHeight: 1.7, letterSpacing: "0.03em" }}>
+            <p style={{ fontFamily: "'Raleway', sans-serif", color: "#808080", fontSize: "clamp(0.75rem, 1.8vw, 0.95rem)", fontWeight: 400, lineHeight: 1.7, letterSpacing: "0.03em" }}>
               Building generational wealth through education, strategy, and trust.
             </p>
           </div>
@@ -90,7 +90,14 @@ export default function Footer() {
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.2rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.75rem" }}>
           <p style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em" }}>© {new Date().getFullYear()} Ten Point Financial Group. All rights reserved.</p>
-          <p style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em" }}>Licensed in all US states except New York & Puerto Rico.</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
+            <a href="/privacy-policy" style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}
+              onMouseOver={(e) => (e.currentTarget.style.color = "#9333ea")}
+              onMouseOut={(e) => (e.currentTarget.style.color = "#555")}>
+              Privacy Policy
+            </a>
+            <p style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em" }}>Licensed in all US states except New York &amp; Puerto Rico.</p>
+          </div>
         </div>
       </div>
     </footer>
