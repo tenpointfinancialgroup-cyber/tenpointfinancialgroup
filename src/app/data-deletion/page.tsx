@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Data Deletion Instructions | Ten Point Financial Group",
-  description: "How to request deletion of your personal data from Ten Point Financial Group, including data collected via Facebook and Instagram.",
-};
+"use client";
+import Image from "next/image";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 const S = {
   white: "#ffffff",
@@ -31,7 +28,7 @@ const steps = [
   {
     num: "03",
     title: "Data Is Deleted",
-    body: `Once verified, we will delete or anonymize your personal data from our systems within **30 days**, including records in our CRM (GoHighLevel), email lists, and any other internal databases.\n\nWe will send you a confirmation email when the deletion is complete.`,
+    body: `Once verified, we will delete or anonymize your personal data from our systems within **7 days**, including records in our CRM (GoHighLevel), email lists, and any other internal databases.\n\nWe will send you a confirmation email when the deletion is complete.`,
   },
   {
     num: "04",
@@ -65,15 +62,20 @@ export default function DataDeletion() {
   return (
     <div style={{ background: S.black, minHeight: "100vh", paddingTop: "6rem" }}>
 
-      {/* Background gradient */}
-      <div
-        style={{
-          position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none",
-          background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(147,51,234,0.08) 0%, transparent 70%)",
-        }}
-      />
+      {/* Marble background */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <Image src="/images/marble-dark.png" alt="" fill style={{ objectFit: "cover", opacity: 0.35 }} priority />
+      </div>
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "780px", margin: "0 auto", padding: "4rem 2rem 6rem" }}>
+      {/* Dark overlay */}
+      <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1, pointerEvents: "none" }} />
+
+      {/* Stars */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 2, pointerEvents: "none" }}>
+        <SparklesCore particleColor="#ffffff" background="transparent" minSize={0.4} maxSize={1.2} particleDensity={40} />
+      </div>
+
+      <div style={{ position: "relative", zIndex: 3, maxWidth: "780px", margin: "0 auto", padding: "4rem 2rem 6rem" }}>
 
         {/* Header */}
         <div style={{ marginBottom: "3rem", borderBottom: `1px solid ${S.border}`, paddingBottom: "2rem" }}>

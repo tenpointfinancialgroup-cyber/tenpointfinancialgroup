@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy | Ten Point Financial Group",
-  description: "Privacy Policy for Ten Point Financial Group — how we collect, use, and protect your personal information.",
-};
+"use client";
+import Image from "next/image";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 const S = {
   white: "#ffffff",
@@ -144,15 +141,20 @@ export default function PrivacyPolicy() {
   return (
     <div style={{ background: S.black, minHeight: "100vh", paddingTop: "6rem" }}>
 
-      {/* ── Subtle background gradient ───────────────────────────────────── */}
-      <div
-        style={{
-          position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none",
-          background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(147,51,234,0.08) 0%, transparent 70%)",
-        }}
-      />
+      {/* Marble background */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <Image src="/images/marble-dark.png" alt="" fill style={{ objectFit: "cover", opacity: 0.35 }} priority />
+      </div>
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "860px", margin: "0 auto", padding: "4rem 2rem 6rem" }}>
+      {/* Dark overlay */}
+      <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1, pointerEvents: "none" }} />
+
+      {/* Stars */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 2, pointerEvents: "none" }}>
+        <SparklesCore particleColor="#ffffff" background="transparent" minSize={0.4} maxSize={1.2} particleDensity={40} />
+      </div>
+
+      <div style={{ position: "relative", zIndex: 3, maxWidth: "860px", margin: "0 auto", padding: "4rem 2rem 6rem" }}>
 
         {/* ── Header ───────────────────────────────────────────────────────── */}
         <div style={{ marginBottom: "3rem", borderBottom: `1px solid ${S.border}`, paddingBottom: "2rem" }}>

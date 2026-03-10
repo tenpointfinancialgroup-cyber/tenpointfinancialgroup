@@ -101,6 +101,11 @@ export default function Footer() {
               onMouseOut={(e) => (e.currentTarget.style.color = "#555")}>
               Data Deletion
             </a>
+            <a href="/terms-of-service" style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}
+              onMouseOver={(e) => (e.currentTarget.style.color = "#9333ea")}
+              onMouseOut={(e) => (e.currentTarget.style.color = "#555")}>
+              Terms of Service
+            </a>
             <p style={{ fontFamily: "'Raleway', sans-serif", color: "#555", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.04em" }}>Licensed in all US states except New York &amp; Puerto Rico.</p>
           </div>
         </div>
