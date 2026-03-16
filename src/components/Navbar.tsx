@@ -1,7 +1,13 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Linkedin, Instagram, Facebook } from "lucide-react";
+
+const XIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z" />
+  </svg>
+);
 import { SpotlightButton } from "@/components/ui/spotlight-button";
 
 export default function Navbar() {
@@ -71,6 +77,38 @@ export default function Navbar() {
             <Mail size={13} strokeWidth={1.5} />
             Email Us
           </a>
+
+          {/* Social Links */}
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+            <a href="https://www.linkedin.com/company/ten-point-financial-group" target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#c0c0c0", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#9333ea")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
+            >
+              <Linkedin size={16} strokeWidth={1.5} />
+            </a>
+            <a href="https://twitter.com/tenpointfin" target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#c0c0c0", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#9333ea")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
+            >
+              <XIcon size={16} />
+            </a>
+            <a href="https://www.instagram.com/tenpointfinancialgroup.llc" target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#c0c0c0", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#9333ea")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
+            >
+              <Instagram size={16} strokeWidth={1.5} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61570193537048" target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#c0c0c0", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#9333ea")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#c0c0c0")}
+            >
+              <Facebook size={16} strokeWidth={1.5} />
+            </a>
+          </div>
 
           <Link href="/contact"><SpotlightButton glowColor="green">Get Started</SpotlightButton></Link>
         </div>

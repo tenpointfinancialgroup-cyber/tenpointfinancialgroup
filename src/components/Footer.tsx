@@ -1,6 +1,12 @@
 "use client";
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Linkedin, Instagram, Facebook } from "lucide-react";
+
+const XIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z" />
+  </svg>
+);
 
 const headingStyle = {
   fontFamily: "'Raleway', sans-serif",
@@ -63,10 +69,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 3 — Contact */}
+          {/* Col 3 — Contact & Social */}
           <div>
             <h4 style={headingStyle}>Contact</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
               <a href="tel:+15868991003"
                 style={{ ...linkStyle, display: "flex", alignItems: "center", gap: "0.5rem" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
@@ -82,6 +88,38 @@ export default function Footer() {
               >
                 <Mail size={14} strokeWidth={1.5} style={{ flexShrink: 0 }} />
                 tenpointfinancialgroup@gmail.com
+              </a>
+            </div>
+
+            <h4 style={headingStyle}>Follow Us</h4>
+            <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+              <a href="https://www.linkedin.com/company/ten-point-financial-group" target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#c0c0c0", transition: "all 0.2s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#9333ea"; e.currentTarget.style.color = "#ffffff"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "#c0c0c0"; }}
+              >
+                <Linkedin size={18} strokeWidth={1.5} />
+              </a>
+              <a href="https://twitter.com/tenpointfin" target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#c0c0c0", transition: "all 0.2s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#9333ea"; e.currentTarget.style.color = "#ffffff"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "#c0c0c0"; }}
+              >
+                <XIcon size={18} />
+              </a>
+              <a href="https://www.instagram.com/tenpointfinancialgroup.llc" target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#c0c0c0", transition: "all 0.2s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#9333ea"; e.currentTarget.style.color = "#ffffff"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "#c0c0c0"; }}
+              >
+                <Instagram size={18} strokeWidth={1.5} />
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61570193537048" target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "#c0c0c0", transition: "all 0.2s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#9333ea"; e.currentTarget.style.color = "#ffffff"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "#c0c0c0"; }}
+              >
+                <Facebook size={18} strokeWidth={1.5} />
               </a>
             </div>
           </div>
